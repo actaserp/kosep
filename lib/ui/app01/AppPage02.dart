@@ -285,7 +285,7 @@ class _AppPage02State extends State<AppPage02>   {
           child: GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: (){
-              showAlertDialog_chulgoDelete(context, da035Data.lotno, da035Data.deldate, da035Data.delnum, da035Data.delseq);
+              showAlertDialog_chulgoDelete(context, da035Data.lotno, da035Data.fdeldate, da035Data.delnum, da035Data.delseq);
               print(da035Data);
               // Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage01_Subpage(da035Data: da035Data)));
             },
@@ -373,7 +373,7 @@ class _AppPage02State extends State<AppPage02>   {
 
 
   Future<Null> _selectDateWithMinMaxDate(BuildContext context) async {
-    var firstDate = DateTime(initialDate.year, initialDate.month - 3, initialDate.day);
+    var firstDate = DateTime(initialDate.year, initialDate.month - 6, initialDate.day);
     var lastDate = DateTime(initialDate.year, initialDate.month, initialDate.day + 7);
     final DateTime? picked = await showDatePicker(
       context: context,

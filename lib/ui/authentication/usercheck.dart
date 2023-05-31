@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:actkosep/config/constant.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:get_ip_address/get_ip_address.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
@@ -21,7 +21,7 @@ Future<Map<String, dynamic>> Usercheck(String userid, String userpw) async{
     body: <String, String> {
       'userid': userid,
       'userpw': userpw,
-      'dbnm': 'ERP_THEMOONN'
+      'dbnm': 'ERP_KOSEP'
     },
   );
   if(response.statusCode == 200){
@@ -38,11 +38,12 @@ Future<Map<String, dynamic>> Usercheck(String userid, String userpw) async{
     // await SessionManager().set("cltcd", userinfo['cltcd']);
     // await SessionManager().set("flag", userinfo['flag']);
     await SessionManager().set("dbnm", userinfo['dbnm']);
-    await SessionManager().set("perid", userinfo['perid']);
-    await SessionManager().set("pernm", userinfo['pernm']);
-    await SessionManager().set("custcd", userinfo['custcd']);
+    // await SessionManager().set("perid", userinfo['perid']);
+    // await SessionManager().set("pernm", userinfo['pernm']);
+    // await SessionManager().set("custcd", userinfo['custcd']);
     // dynamic user_saupnum = await SessionManager().get("saupnum");
-
+    print('username');
+    print(userinfo['username']);
     //Update session
     //  await SessionManager().update();
     //Delete session and all data in it
@@ -51,12 +52,13 @@ Future<Map<String, dynamic>> Usercheck(String userid, String userpw) async{
     //  await SessionManager().remove("id");
     //Verify wether or not a key exists
     //  await SessionManager().containsKey("id"); // true or false
-
-    save_log();
+    //save_log();
   }else{
     // throw Exception('Failed to load data');
   }
-  // print(userinfo.length);
+  print('username2');
+  print(userinfo['username']);
+  print(userinfo.length);
   return userinfo;
 }
 

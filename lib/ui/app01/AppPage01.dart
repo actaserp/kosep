@@ -286,7 +286,7 @@ class _AppPage01State extends State<AppPage01>   {
 
 
   Future<Null> _selectDateWithMinMaxDate(BuildContext context) async {
-    var firstDate = DateTime(initialDate.year, initialDate.month - 3, initialDate.day);
+    var firstDate = DateTime(initialDate.year, initialDate.month - 6, initialDate.day);
     var lastDate = DateTime(initialDate.year, initialDate.month, initialDate.day + 7);
     final DateTime? picked = await showDatePicker(
       context: context,
