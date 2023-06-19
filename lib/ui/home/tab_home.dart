@@ -18,6 +18,7 @@ import '../account/tab_account.dart';
 import '../app01/AppPage01.dart';
 import '../app01/AppPage02.dart';
 import '../app01/AppPage03.dart';
+import '../app01/AppPage04.dart';
 
 class TabHomePage extends StatefulWidget {
   final String? id;
@@ -52,16 +53,17 @@ class _Home1PageState extends State<TabHomePage> {
   void initState()  {
     setData();
     //GLOBAL_URL+'/home_banner/1.jpg'));  LOCAL_IMAGES_URL+'/elvimg/1.jpg'
-    _bannerData.add(BannerSliderModel(id: 1, image: HYUNDAI_URL + '/product_gallery/THE EL_main_Web(0).jpg'));
-    _bannerData.add(BannerSliderModel(id: 2, image: HYUNDAI_URL + '/product_gallery/THE EL_4(1).jpg'));
-    _bannerData.add(BannerSliderModel(id: 3, image: HYUNDAI_URL + '/product_gallery/THE EL_3(1).jpg'));
-    _bannerData.add(BannerSliderModel(id: 4, image: HYUNDAI_URL + '/product_gallery/THE EL_2(1).jpg'));
-    _bannerData.add(BannerSliderModel(id: 5, image: HYUNDAI_URL + '/product_characteristic/특징_02(0).jpg'));
+    _bannerData.add(BannerSliderModel(id: 1, image: HYUNDAI_URL + '/9/a/csm_Grundlagen-Faserverbundwerkstoffe_95b8ba641e.jpg'));
+    _bannerData.add(BannerSliderModel(id: 2, image: HYUNDAI_URL + '/5/2/csm_Weiterverarbeitung-GFK_459cb02a1f.jpg'));
+    _bannerData.add(BannerSliderModel(id: 3, image: HYUNDAI_URL + '/8/e/csm_LAMILUX-Composites-Produktuebersicht-Sunsation_f4ce862745.jpg'));
+    _bannerData.add(BannerSliderModel(id: 4, image: HYUNDAI_URL + '/7/6/csm_GFK_LKW_Innen_80e43fb0bb.jpg'));
+    _bannerData.add(BannerSliderModel(id: 5, image: HYUNDAI_URL + '/3/b/csm_GFK_LKW_22950c45dd.jpg'));
 
-    _categoryData.add(CategoryModel(id: 1, name: '출 고 등 록', image: GLOBAL_URL+'/menu/store.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 2, name: '출 고 현 황(LOT)', image: GLOBAL_URL+'/menu/products.png', color:0xD3D3D3));
-    // _categoryData.add(CategoryModel(id: 3, name: '출 고 현 황', image: GLOBAL_URL+'/menu/buy_online.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 4, name: '사 용 자 정 보', image: GLOBAL_URL+'/menu/apply_credit.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 1, name: '출 고 등 록', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 2, name: '출 고 현 황(LOT)', image: GLOBAL_URL+'/menu/point.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 3, name: '재 고 이 동', image: GLOBAL_URL+'/menu/buy_online.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 4, name: '이 동 현 황', image: GLOBAL_URL+'/menu/commission.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 5, name: '사 용 자 정 보', image: GLOBAL_URL+'/menu/apply_credit.png', color:0xD3D3D3));
     // _categoryData.add(CategoryModel(id: 5, name: '수입검사등록', image: GLOBAL_URL+'/menu/store.png', color:0xD3D3D3));
     // _categoryData.add(CategoryModel(id: 6, name: '수입검사현황', image: GLOBAL_URL+'/menu/products.png', color:0xD3D3D3));
 
@@ -263,9 +265,12 @@ bottomNavigationBar: SizedBox.shrink(),
                   case '출 고 현 황(LOT)' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage02()));
                     break;
-                  // case '출 고 현 황' :
-                  //   Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage03()));
-                  //   break;
+                  case '재 고 이 동' :
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage03()));
+                    break;
+                  case '이 동 현 황' :
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage04()));
+                    break;
                   case '사 용 자 정 보' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => TabAccountPage()));
                     break;

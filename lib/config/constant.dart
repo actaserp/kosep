@@ -25,10 +25,10 @@ const String ERROR_OCCURED = 'Error occured, please try again later';
 const int LIMIT_PAGE = 8;
 
 const String GLOBAL_URL = 'https://ijtechnology.net/assets/images/api/devkit';
-const String CLOUD_URL = 'http://emmsg.co.kr:8970';
-//const String CLOUD_URL = 'http://192.168.0.155:8970';
+//const String CLOUD_URL = 'http://emmsg.co.kr:8970';
+const String CLOUD_URL = 'http://192.168.0.155:8970';
 const String LOCAL_URL = 'http://192.168.0.155:8970';
-const String HYUNDAI_URL = 'https://www.hyundaielevator.com/upload';
+const String HYUNDAI_URL = 'https://www.lamilux.com/fileadmin/_processed_';
 
 const String LOCAL_IMAGES_URL = 'assets/images';
 const String LOCAL_DOWNLOAD_URL = 'develop/upload';

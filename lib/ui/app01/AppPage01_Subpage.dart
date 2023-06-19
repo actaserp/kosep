@@ -387,7 +387,7 @@ class _AppPage01_SubpageState extends State<AppPage01_Subpage> {
         }
       }
       //R1092205672
-      _lsItemcd = 'R1092205672';
+      // _lsItemcd = 'R1092205672';
       setState(() {
         arrBarcodeText.add(_lsItemcd);
       });
