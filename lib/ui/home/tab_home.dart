@@ -19,6 +19,7 @@ import '../app01/AppPage01.dart';
 import '../app01/AppPage02.dart';
 import '../app01/AppPage03.dart';
 import '../app01/AppPage04.dart';
+import '../app01/AppPage05.dart';
 
 class TabHomePage extends StatefulWidget {
   final String? id;
@@ -61,9 +62,10 @@ class _Home1PageState extends State<TabHomePage> {
 
     _categoryData.add(CategoryModel(id: 1, name: '출 고 등 록', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
     _categoryData.add(CategoryModel(id: 2, name: '출 고 현 황(LOT)', image: GLOBAL_URL+'/menu/point.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 3, name: '재 고 이 동', image: GLOBAL_URL+'/menu/buy_online.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 4, name: '이 동 현 황', image: GLOBAL_URL+'/menu/commission.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 5, name: '사 용 자 정 보', image: GLOBAL_URL+'/menu/apply_credit.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 3, name: '출 고 LOT', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 4, name: '재 고 이 동', image: GLOBAL_URL+'/menu/buy_online.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 5, name: '이 동 현 황', image: GLOBAL_URL+'/menu/commission.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 6, name: '사 용 자 정 보', image: GLOBAL_URL+'/menu/apply_credit.png', color:0xD3D3D3));
     // _categoryData.add(CategoryModel(id: 5, name: '수입검사등록', image: GLOBAL_URL+'/menu/store.png', color:0xD3D3D3));
     // _categoryData.add(CategoryModel(id: 6, name: '수입검사현황', image: GLOBAL_URL+'/menu/products.png', color:0xD3D3D3));
 
@@ -264,6 +266,9 @@ bottomNavigationBar: SizedBox.shrink(),
                     break;
                   case '출 고 현 황(LOT)' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage02()));
+                    break;
+                  case '출 고 LOT' :
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage05()));
                     break;
                   case '재 고 이 동' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage03()));

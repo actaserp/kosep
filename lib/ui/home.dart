@@ -89,24 +89,31 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               )
           ),
           BottomNavigationBarItem(
-              label: '재고이동',
+              label: '출고LOT',
               icon: Icon(
-                  Icons.person_outline,
+                  Icons.perm_contact_cal,
                   color: _currentIndex == 3 ? PRIMARY_COLOR : CHARCOAL
               )
           ),
           BottomNavigationBarItem(
-              label: '이동현황',
+              label: '재고이동',
               icon: Icon(
                   Icons.person_outline,
                   color: _currentIndex == 4 ? PRIMARY_COLOR : CHARCOAL
               )
           ),
           BottomNavigationBarItem(
-              label: 'Account',
+              label: '이동현황',
               icon: Icon(
                   Icons.person_outline,
                   color: _currentIndex == 5 ? PRIMARY_COLOR : CHARCOAL
+              )
+          ),
+          BottomNavigationBarItem(
+              label: 'Account',
+              icon: Icon(
+                  Icons.person_outline,
+                  color: _currentIndex == 6 ? PRIMARY_COLOR : CHARCOAL
               )
           ),
         ],
