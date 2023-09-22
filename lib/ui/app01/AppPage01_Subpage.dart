@@ -115,6 +115,10 @@ class _AppPage01_SubpageState extends State<AppPage01_Subpage> {
 
   Future da006list_getdata() async {
     String _dbnm = await  SessionManager().get("dbnm");
+    if (_totqty != arrBarcodeText.length){
+      showAlertDialog(context, "수량과 LOT갯수가 같지않습니다.");
+      return false;
+    }
 
     var uritxt = CLOUD_URL + '/kosep/list02';
     var encoded = Uri.encodeFull(uritxt);
@@ -379,41 +383,17 @@ class _AppPage01_SubpageState extends State<AppPage01_Subpage> {
     if(_lsItemcd == 'READ_FAIL'){
       showAlertDialog(context, "바코드 스캔을 실패했습니다.");
     }else{
-
       for(var code in arrBarcodeText){
         if(code == _lsItemcd){
           showAlertDialog(context, "동일한 코드가 스캔되었습니다.");
           return ;
         }
       }
-      //R1092205672
-      // _lsItemcd = 'R1092205672';
-      setState(() {
-        arrBarcodeText.add(_lsItemcd);
-      });
-      // print(arrBarcodeText);
-      if(arrBarcodeText.length > _totqty){
-        showAlertDialog(context, "출고수량을 초과했습니다.");
-        return;
-      }
-      String ls_arrcode = "";
-      arrBarcode = "";
-      for(var code in arrBarcodeText){
-        if(ls_arrcode.length > 0){
-          ls_arrcode = ls_arrcode + " * " + code;
-        }else{
-          ls_arrcode =  code;
-        }
-      }
-      for(var code in arrBarcodeText){
-        if(arrBarcode.length > 0){
-          arrBarcode = arrBarcode + "|" + code;
-        }else{
-          arrBarcode =  code;
-        }
-      }
-      _etBarcode = TextEditingController(text: ls_arrcode);
-      // showAlertDialog_chulgoSave(context, _lsItemcd);
+      //R1092205672   R2022200024  R1022302444
+      // _lsItemcd = 'R2022200024';
+      //print(_lsItemcd);
+      Chk_Defaultdata(_lsItemcd);
+      return ;
     }
   }
 
@@ -428,6 +408,81 @@ class _AppPage01_SubpageState extends State<AppPage01_Subpage> {
     });
     print("_onError : " );
     print(_decodeResult );
+  }
+
+
+  Future Chk_Defaultdata(argcode) async {
+    String _dbnm = await  SessionManager().get("dbnm");
+    var ls_default = "";
+    var uritxt = CLOUD_URL + '/kosep/list01pcode';
+    var encoded = Uri.encodeFull(uritxt);
+    Uri uri = Uri.parse(encoded);
+    // print("_lsEtGrade=>" + _lsEtGrade);
+    // print("_lsEtThick=>" + _lsEtThick);
+    // arrBarcode = 'R1022204246|R1022204246';
+    final response = await http.post(
+      uri,
+      headers: <String, String> {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept' : 'application/json'
+      },
+      body: <String, String> {
+        'dbnm': _dbnm,
+        'barcode': argcode
+      },
+    );
+    if(response.statusCode == 200){
+      try{
+        // var result =  jsonDecode(utf8.decode(response.bodyBytes))  ;
+
+        var result =  utf8.decode(response.bodyBytes);
+        Map DataMap = jsonDecode(result);
+        //print(DataMap["itemcd"]);
+        if(DataMap["itemcd"] == "NULL"){
+          showAlertDialog(context, _lsItemcd + ": 해당 LOT정보가 없습니다.");
+          return;
+        }
+        //Default 수량이 없거나 0일경우 진행
+        if (DataMap["deldefault"] == "0"){
+          setState(() {
+            arrBarcodeText.add(_lsItemcd);
+          });
+          // print(arrBarcodeText);
+          if(arrBarcodeText.length > _totqty){
+            arrBarcodeText.remove(_lsItemcd);
+            showAlertDialog(context, "출고수량을 초과했습니다.");
+            return;
+          }
+          String ls_arrcode = "";
+          arrBarcode = "";
+          for(var code in arrBarcodeText){
+            if(ls_arrcode.length > 0){
+              ls_arrcode = ls_arrcode + " * " + code;
+            }else{
+              ls_arrcode =  code;
+            }
+          }
+          for(var code in arrBarcodeText){
+            if(arrBarcode.length > 0){
+              arrBarcode = arrBarcode + "|" + code;
+            }else{
+              arrBarcode =  code;
+            }
+          }
+          _etBarcode = TextEditingController(text: ls_arrcode);
+          // showAlertDialog_chulgoSave(context, _lsItemcd);
+        }else{
+          showAlertDialog_DefaultCheck(context, DataMap["deldefault"], argcode);
+        }
+        return ;
+      }catch(e){
+        // print(e.toString());
+        showAlertDialog(context, e.toString() + " : 관리자에게 문의하세요");
+      }
+    }else{
+      //만약 응답이 ok가 아니면 에러를 던집니다.
+      throw Exception('불러오는데 실패했습니다');
+    }
   }
 
 
@@ -471,6 +526,64 @@ class _AppPage01_SubpageState extends State<AppPage01_Subpage> {
       },
     );
   }
+
+
+
+  void showAlertDialog_DefaultCheck(BuildContext context, String as_msg, String as_itemcd) async {
+    String result = await showDialog(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('LOT Default 체크'),
+          content: Text("Default 수량 : " + as_msg + "  등록하시겠습니까?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () async{
+                Navigator.pop(context, "확인");
+                    setState(() {
+                      arrBarcodeText.add(_lsItemcd);
+                    });
+                    // print(arrBarcodeText);
+                    if(arrBarcodeText.length > _totqty){
+                      arrBarcodeText.remove(_lsItemcd);
+                      showAlertDialog(context, "출고수량을 초과했습니다.");
+                      return;
+                    }
+                    String ls_arrcode = "";
+                    arrBarcode = "";
+                    for(var code in arrBarcodeText){
+                      if(ls_arrcode.length > 0){
+                        ls_arrcode = ls_arrcode + " * " + code;
+                      }else{
+                        ls_arrcode =  code;
+                      }
+                    }
+                    for(var code in arrBarcodeText){
+                      if(arrBarcode.length > 0){
+                        arrBarcode = arrBarcode + "|" + code;
+                      }else{
+                        arrBarcode =  code;
+                      }
+                    }
+                    _etBarcode = TextEditingController(text: ls_arrcode);
+                    // showAlertDialog_chulgoSave(context, _lsItemcd);
+                  },
+            ),
+            TextButton(
+              child: Text('취소'),
+              onPressed: () {
+                Navigator.pop(context, "닫기");
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 
   void showAlertDialog_Clear(BuildContext context) async {
     String result = await showDialog(

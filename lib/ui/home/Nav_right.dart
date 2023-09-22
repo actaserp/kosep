@@ -61,7 +61,7 @@ class Nav_right extends StatelessWidget{
                         Icon(Icons.favorite),
                         SizedBox(
                             width: 10),
-                        Text('출고등록'),
+                        Text('코세프출고'),
                       ]))),
           ListTile(
               title: GestureDetector(

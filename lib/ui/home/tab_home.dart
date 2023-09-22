@@ -60,9 +60,9 @@ class _Home1PageState extends State<TabHomePage> {
     _bannerData.add(BannerSliderModel(id: 4, image: HYUNDAI_URL + '/7/6/csm_GFK_LKW_Innen_80e43fb0bb.jpg'));
     _bannerData.add(BannerSliderModel(id: 5, image: HYUNDAI_URL + '/3/b/csm_GFK_LKW_22950c45dd.jpg'));
 
-    _categoryData.add(CategoryModel(id: 1, name: '출 고 등 록', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 1, name: '코 세 프 출 고', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
     _categoryData.add(CategoryModel(id: 2, name: '출 고 현 황(LOT)', image: GLOBAL_URL+'/menu/point.png', color:0xD3D3D3));
-    _categoryData.add(CategoryModel(id: 3, name: '출 고 LOT', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
+    _categoryData.add(CategoryModel(id: 3, name: '성 우 사 용', image: GLOBAL_URL+'/menu/credit_application_status.png', color:0xD3D3D3));
     _categoryData.add(CategoryModel(id: 4, name: '재 고 이 동', image: GLOBAL_URL+'/menu/buy_online.png', color:0xD3D3D3));
     _categoryData.add(CategoryModel(id: 5, name: '이 동 현 황', image: GLOBAL_URL+'/menu/commission.png', color:0xD3D3D3));
     _categoryData.add(CategoryModel(id: 6, name: '사 용 자 정 보', image: GLOBAL_URL+'/menu/apply_credit.png', color:0xD3D3D3));
@@ -261,13 +261,13 @@ bottomNavigationBar: SizedBox.shrink(),
                 // Fluttertoast.showToast(msg: 'Click '+_categoryData[index].name.replaceAll('\n', ' '), toastLength: Toast.LENGTH_SHORT);
                 String ls_name = _categoryData[index].name.replaceAll('\n', ' ');
                 switch (ls_name){
-                  case '출 고 등 록' :
+                  case '코 세 프 출 고' :
                      Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage01()));
                     break;
                   case '출 고 현 황(LOT)' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage02()));
                     break;
-                  case '출 고 LOT' :
+                  case '성 우 사 용' :
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppPage05()));
                     break;
                   case '재 고 이 동' :

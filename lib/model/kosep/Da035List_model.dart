@@ -29,14 +29,16 @@ class Da035List_model{
   late var psize;
   late var uamt;
   late var samt;
+  late var remark;
+  late var deldefault;
 
 
 
 
-  Da035List_model({ required this.custcd,required this.spjangcd, this.fdeldate, this.fdeldatetext, this.fdelnum, this.fdelseq,
-    required this.cltcd, required this.cltnm,
-    required this.pcode,required this.pname,  this.width,   this.thick,  this.color,  this.deldate,required this.delnum,required this.delseq,
-      this.grade,   this.qty, this.lotno, this.psize, this.uamt, this.samt});
+  Da035List_model({   this.custcd,  this.spjangcd, this.fdeldate, this.fdeldatetext, this.fdelnum, this.fdelseq,
+      this.cltcd,   this.cltnm,
+      this.pcode,  this.pname,  this.width,   this.thick,  this.color,  this.deldate,  this.delnum,  this.delseq,
+      this.grade,   this.qty, this.lotno, this.psize, this.uamt, this.samt, this.remark, this.deldefault});
 
 
 

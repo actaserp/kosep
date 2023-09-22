@@ -102,7 +102,8 @@ class _AppPage01State extends State<AppPage01>   {
             delseq:alllist[i]['delseq'],
             grade:alllist[i]['grade'],
             qty:alllist[i]['qty'],
-            uamt:alllist[i]['uamt']
+            uamt:alllist[i]['uamt'],
+            remark:alllist[i]['remark']
         );
         setState(() {
           da035Data.add(emObject);
@@ -249,8 +250,9 @@ class _AppPage01State extends State<AppPage01>   {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(da035Data.cltnm, style: GlobalStyle.couponName),
-                  Text(da035Data.grade, style: GlobalStyle.couponName),
+                  Text(da035Data.grade , style: GlobalStyle.couponName),
                   Text(da035Data.thick+' ['+da035Data.width+'] '+da035Data.color, style: GlobalStyle.couponName),
+                  Text(da035Data.remark, style: GlobalStyle.couponName),
                   SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               )
           ),
           BottomNavigationBarItem(
-              label: '출고등록',
+              label: '코세프출고',
               icon: Icon(
                   Icons.favorite,
                   color: _currentIndex == 1 ? ASSENT_COLOR : CHARCOAL
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               )
           ),
           BottomNavigationBarItem(
-              label: '출고LOT',
+              label: '성우사용',
               icon: Icon(
                   Icons.perm_contact_cal,
                   color: _currentIndex == 3 ? PRIMARY_COLOR : CHARCOAL
